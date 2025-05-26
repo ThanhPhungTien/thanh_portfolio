@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:thanh_portfolio/generated/assets.dart';
 
-class AboutMeView extends StatefulWidget {
-  const AboutMeView({super.key});
+class AboutMeView extends StatelessWidget {
+  const AboutMeView({super.key, required this.paddingSize});
 
-  @override
-  State<AboutMeView> createState() => _AboutMeViewState();
-}
+  final double paddingSize;
 
-class _AboutMeViewState extends State<AboutMeView> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: EdgeInsets.all(paddingSize),
+      child: Row(
+        children: [
+          Expanded(child: Text('About Me')),
+          Expanded(child: SvgPicture.asset(Assets.assetsAboutMe)),
+        ],
+      ),
+    );
   }
 }

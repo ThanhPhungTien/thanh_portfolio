@@ -2,6 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String assetsAboutMe = 'assets/about_me.svg';
+  static const String assetsContact = 'assets/contact.svg';
   static const String assetsHomeImage = 'assets/home_image.svg';
+  static const String assetsWorks = 'assets/works.svg';
 
 }

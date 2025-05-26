@@ -39,6 +39,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: LayoutBuilder(
         builder: (context, constraint) {
+          final paddingSize = constraint.maxWidth / 18;
+          final isMobile = constraint.maxWidth < 600;
           return ScrollConfiguration(
             behavior: ScrollConfiguration.of(context).copyWith(
               dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
@@ -47,12 +49,12 @@ class _HomePageState extends State<HomePage> {
               controller: controller,
               scrollDirection: Axis.vertical,
               allowImplicitScrolling: true,
-              onPageChanged: (page)=> pageListenable.value = page,
+              onPageChanged: (page) => pageListenable.value = page,
               children: [
-                HomeView(paddingSize: constraint.maxWidth / 18),
-                AboutMeView(),
+                HomeView(paddingSize: paddingSize),
+                AboutMeView(paddingSize: paddingSize),
                 WorksView(),
-                ContactView(),
+                ContactView(paddingSize: paddingSize, isMobile: isMobile),
               ],
             ),
           );
