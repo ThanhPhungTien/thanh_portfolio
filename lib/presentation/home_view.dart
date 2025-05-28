@@ -20,22 +20,13 @@ class HomeView extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text('Software Engineer', style: textTheme.headlineLarge),
-                OverflowBar(
-                  spacing: 12,
-                  children: [
-                    FilledButton(onPressed: () {}, child: Text('Contact me')),
-                    FilledButton.tonalIcon(
-                      onPressed: () {},
-                      label: Text('Download CV'),
-                      icon: Icon(Icons.file_download_outlined),
-                    ),
-                  ],
-                ),
+                FilledButton.tonal(onPressed: () {}, child: Text('Contact me')),
+
                 SizedBox(height: 80),
               ],
             ),
           ),
-          Expanded(child: SvgPicture.asset(Assets.assetsHomeImage)),
+          Expanded(child: SvgPicture.asset(Assets.assetsHome)),
         ],
       ),
     );

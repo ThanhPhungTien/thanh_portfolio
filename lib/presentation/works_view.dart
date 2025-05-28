@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:thanh_portfolio/generated/assets.dart';
 
 class WorksView extends StatelessWidget {
@@ -7,14 +7,8 @@ class WorksView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: Svg(Assets.assetsWorks),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Text('data'),
+    return Center(
+      child: SvgPicture.asset(Assets.assetsWork),
     );
   }
 }

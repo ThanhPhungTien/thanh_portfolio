@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: const Text('Thanh Portfolio'),
+        title: const Text('Thanh'),
         actions: [
           TextButton(onPressed: () => openPage(0), child: Text('Home')),
           TextButton(onPressed: () => openPage(1), child: Text('About Me')),
@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                 AboutMeView(paddingSize: paddingSize),
                 WorksView(),
                 ContactView(paddingSize: paddingSize, isMobile: isMobile),
+                SizedBox(width: 16),
               ],
             ),
           );

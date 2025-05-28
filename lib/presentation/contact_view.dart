@@ -20,15 +20,33 @@ class ContactView extends StatelessWidget {
           ? Column(
               children: [
                 Expanded(child: SvgPicture.asset(Assets.assetsContact)),
-                Expanded(child: SvgPicture.asset(Assets.assetsContact)),
+                Expanded(child: SocialView()),
               ],
             )
           : Row(
               children: [
                 Expanded(child: SvgPicture.asset(Assets.assetsContact)),
-                Expanded(child: SvgPicture.asset(Assets.assetsContact)),
+                Expanded(child: SocialView()),
               ],
             ),
+    );
+  }
+}
+
+class SocialView extends StatelessWidget {
+  const SocialView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.facebook)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.email)),
+          ],
+        ),
+      ],
     );
   }
 }
