@@ -69,7 +69,6 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: const Text('Thanh'),
         actions: [
           TextButton(onPressed: () => openPage(0), child: Text('Home')),
           TextButton(onPressed: () => openPage(1), child: Text('About Me')),
@@ -111,18 +110,21 @@ class _HomePageState extends State<HomePage>
               return SizedBox(
                 width: _widthAnimation.value,
                 height: _widthAnimation.value,
-                child: value == 3 ? null : child,
+                child: child,
               );
             },
             child: FloatingActionButton(
               onPressed: () {
                 animationController.forward(from: 0);
-                controller.nextPage(
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.easeIn,
-                );
+                if (value == 3) {
+                  openPage(0);
+                } else {
+                  openPage(value + 1);
+                }
               },
-              child: Icon(Icons.arrow_downward),
+              child: Icon(
+                value == 3 ? Icons.home_outlined : Icons.arrow_downward,
+              ),
             ),
           );
         },
