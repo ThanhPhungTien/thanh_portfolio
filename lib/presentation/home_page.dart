@@ -12,16 +12,56 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   final PageController controller = PageController();
   final pageListenable = ValueNotifier(0);
 
+  late AnimationController animationController;
+  late Animation<double> _widthAnimation;
+
+  final double _originalWidth = 60;
+  final double _shrunkWidth = 30;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+
+    _widthAnimation = TweenSequence<double>([
+      TweenSequenceItem(
+        tween: Tween(
+          begin: _originalWidth,
+          end: _shrunkWidth,
+        ).chain(CurveTween(curve: Curves.easeOut)),
+        weight: 50,
+      ),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: _shrunkWidth,
+          end: _originalWidth,
+        ).chain(CurveTween(curve: Curves.easeIn)),
+        weight: 50,
+      ),
+    ]).animate(animationController);
+  }
+
   void openPage(int index) {
+    animationController.forward(from: 0);
     controller.animateToPage(
       index,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -53,7 +93,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 HomeView(paddingSize: paddingSize),
                 AboutMeView(paddingSize: paddingSize),
-                WorksView(),
+                WorksView(paddingSize: paddingSize),
                 ContactView(paddingSize: paddingSize, isMobile: isMobile),
                 SizedBox(width: 16),
               ],
@@ -65,17 +105,26 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: ValueListenableBuilder(
         valueListenable: pageListenable,
         builder: (context, value, child) {
-          return value != 3
-              ? FloatingActionButton(
-                  onPressed: () {
-                    controller.nextPage(
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.easeIn,
-                    );
-                  },
-                  child: Icon(Icons.arrow_downward),
-                )
-              : SizedBox.shrink();
+          return AnimatedBuilder(
+            animation: animationController,
+            builder: (BuildContext context, child) {
+              return SizedBox(
+                width: _widthAnimation.value,
+                height: _widthAnimation.value,
+                child: value == 3 ? null : child,
+              );
+            },
+            child: FloatingActionButton(
+              onPressed: () {
+                animationController.forward(from: 0);
+                controller.nextPage(
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.easeIn,
+                );
+              },
+              child: Icon(Icons.arrow_downward),
+            ),
+          );
         },
       ),
     );

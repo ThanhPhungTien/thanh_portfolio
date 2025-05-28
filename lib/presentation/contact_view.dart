@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:thanh_portfolio/generated/assets.dart';
+import 'package:thanh_portfolio/presentation/social_bar_view.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({
@@ -20,33 +21,16 @@ class ContactView extends StatelessWidget {
           ? Column(
               children: [
                 Expanded(child: SvgPicture.asset(Assets.assetsContact)),
-                Expanded(child: SocialView()),
+                Expanded(child: SocialBarView()),
               ],
             )
           : Row(
               children: [
                 Expanded(child: SvgPicture.asset(Assets.assetsContact)),
-                Expanded(child: SocialView()),
+                Expanded(child: SocialBarView()),
               ],
             ),
     );
   }
 }
 
-class SocialView extends StatelessWidget {
-  const SocialView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.facebook)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.email)),
-          ],
-        ),
-      ],
-    );
-  }
-}

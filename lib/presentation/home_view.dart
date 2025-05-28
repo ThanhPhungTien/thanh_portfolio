@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:thanh_portfolio/generated/assets.dart';
+import 'package:thanh_portfolio/presentation/social_bar_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key, required this.paddingSize});
@@ -20,9 +21,7 @@ class HomeView extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text('Software Engineer', style: textTheme.headlineLarge),
-                FilledButton.tonal(onPressed: () {}, child: Text('Contact me')),
-
-                SizedBox(height: 80),
+                SocialBarView(),
               ],
             ),
           ),

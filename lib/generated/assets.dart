@@ -4,11 +4,11 @@ class Assets {
 
   static const String assetsAboutMe = 'assets/about_me.svg';
   static const String assetsContact = 'assets/contact.svg';
-  static const String assetsFacebook = 'assets/facebook.svg';
-  static const String assetsGithub = 'assets/github.svg';
-  static const String assetsGmail = 'assets/gmail.svg';
+  static const String assetsFacebook = 'assets/facebook.png';
+  static const String assetsGithub = 'assets/github.png';
+  static const String assetsGmail = 'assets/gmail.png';
   static const String assetsHome = 'assets/home.svg';
-  static const String assetsLinkedin = 'assets/linkedin.svg';
+  static const String assetsLinkedin = 'assets/linkedin.png';
   static const String assetsWork = 'assets/work.svg';
 
 }

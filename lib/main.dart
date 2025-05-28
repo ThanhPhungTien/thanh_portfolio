@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       valueListenable: brightnessListenable,
       builder: (context, value, child) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Portfolio',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
